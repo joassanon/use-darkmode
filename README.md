@@ -1,4 +1,4 @@
-# Open-source stack
+# use-darkmode
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/joassanon/use-darkmode?style=social)
 ![npm](https://img.shields.io/npm/v/use-darkmode?style=plastic)
@@ -7,50 +7,83 @@
 ![npm](https://img.shields.io/npm/dw/use-darkmode?style=plastic)
 ![GitHub top language](https://img.shields.io/github/languages/top/joassanon/use-darkmode?style=plastic)
 
-Full starter stack to develop CJS/ESM compatible npm packages with TypeScript, Vitest, ESLint, Prettier, and GitHub Actions.
-
-Detailed overview of the stastack:
-https://youtu.be/ABRpwxLdGho
-
-Deploy your open-source project to npm with ease, with fully covered bundling, testing, linting and deployment setup out of the box,
-don't worry about CJS or ESM, bundling your typescript definitions or anything else, focus on coding out your solution and let the stack take care of the rest.
-
-Build your own open-source project today! 🚀
-
-## Tools
-
-- **TypeScript**: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
-- **Vitest**: A modern test runner built on top of Vite.
-- **ESLint**: ESLint statically analyzes your code to quickly find problems.
-- **Prettier**: Prettier is an opinionated code formatter.
-- **GitHub Actions**: Automate your workflow from idea to production.
-- **tsup** - Zero-config bundler for tiny TypeScript libraries.
+A flexible and easy-to-use React hook for implementing dark mode in your applications. This package provides a simple way to toggle between light, dark, and system preference themes.
 
 ## Features
 
-- **ESM/CJS ready** - Write your code in TypeScript and publish it as ESM and CJS with 0 configuration.
-- **Are The types wrong? ready** - Passes all the checks for typings on https://arethetypeswrong.github.io/ by default.
-- **ESM/CJS test apps setup** - Test your package in both ESM and CJS environments already setup for you.
-- **Test runner setup** - Test your open source package with Vitest already setup for you.
-- **Linting setup** - Lint your code with ESLint and Prettier already setup for you.
-- **GitHub Actions setup** - Automate deployments to npm by using GitHub Actions.
+- **Easy Integration**: Quickly add dark mode functionality to your React applications.
+- **System Preference Support**: Automatically detects and applies the user's system preference for light or dark mode.
+- **Manual Override**: Allows users to manually switch between light and dark modes, overriding system preferences.
+- **Persistent Theme**: Saves the user's theme preference, persisting it across page reloads.
+- **TypeScript Support**: Fully typed for better developer experience and code safety.
+- **Context-based**: Uses React Context for efficient theme management across your entire application.
+- **SSR Compatible**: Works seamlessly with server-side rendered applications.
+- **Minimal Dependencies**: Built with minimal external dependencies for a lighter package footprint.
 
-## Setup
+## Installation
 
-1. Use this template to create a new repository.
-2. Clone the repository.
-3. Change the package name in `package.json`.
-4. Change the `use-darkmode` dependency in your test-apps to your name
-5. Install the dependencies with `npm install`.
-6. Change the `repository`, `bugs`, and `homepage` fields in `package.json` to your github repo.
-7. Change the license if required.
-8. Add the NPM_TOKEN secret to your GitHub repository.
-9. Start coding!
+Install the package using npm:
 
-## Scripts
+```bash
+npm install use-darkmode
+```
 
-- `npm run build` - Build the package.
-- `npm run test` - Run the tests.
-- `npm run lint` - Lint the code.
-- `npm run dev` - Start the package and ESM test app in watch mode for development.
-- `npm run dev:cjs` - Start the package and CJS test app in watch mode for development.
+Or using yarn:
+
+```bash
+yarn add use-darkmode
+```
+
+## Usage
+
+1. Wrap your application with the `DarkModeProvider`:
+
+```jsx
+import { DarkModeProvider } from 'use-darkmode';
+
+function App() {
+  return (
+    <DarkModeProvider>
+      {/* Your app components */}
+    </DarkModeProvider>
+  );
+}
+```
+
+2. Use the `useDarkmode` hook in your components:
+
+```jsx
+import { useDarkmode } from 'use-darkmode';
+
+function ThemeToggle() {
+  const { mode, changeMode } = useDarkmode();
+
+  return (
+    <button onClick={() => changeMode(mode === 'dark' ? 'light' : 'dark')}>
+      Toggle Theme
+    </button>
+  );
+}
+```
+
+## API
+
+### DarkModeProvider
+
+A React component that provides the dark mode context to its children.
+
+### useDarkmode
+
+A custom hook that returns an object with the following properties:
+
+- `mode`: The current theme mode ('light', 'dark', or 'system').
+- `modes`: An array of available modes.
+- `changeMode`: A function to change the current mode.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
