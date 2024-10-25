@@ -1,5 +1,5 @@
 {
-	"name": "use-darkmode",
+	"name": "@joassanon/use-darkmode",
 	"version": "1.0.0",
 	"description": "Minimal hook to handle darkmode support in your application, with TS support.",
 	"main": "./dist/index.js",
